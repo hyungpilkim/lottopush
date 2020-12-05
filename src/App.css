@@ -1,38 +1,235 @@
-.App {
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #58666e;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjus: 100%;  /* iphone font size 변경 방지 */
+}
+li { list-style: none; }
+a { text-decoration: none; }
+h1, h2, h3, h4, h5, h6, p {
+  margin: 10px 5px;
+}
+h1 { font-size: 1.8em; }
+
+#wrap {
+  width: 100%;
+  /* margin-top = header height */
+  margin-top: 60px;
+}
+
+/* Navigation bar */
+header {
+  /* for sticky header */
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  height: 60px;
+  z-index: 2000;
+  background-color: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.logo {
+  display: inline-block;
+  height: 36px;
+  font-size:x-large;
+  margin: 12px 0 12px 25px;
+}
+.logo > img { height: 36px; }
+nav {
+  float: right;
+}
+.nav-items {
+  margin-right: 20px;
+}
+.nav-items > li {
+  display: inline-block;  /* 가로정렬 */
+}
+.nav-items > li > a {
+  /* for Vertical Centering */
+  line-height: 60px;
+  padding: 0 30px;
+}
+.nav-items > li > a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-items> li.active {
+  background-color: #4CAF50;
+  color: #fff;
+}
+.nav-items > li:hover:not(.active) {
+  background-color: #555;
+}
+
+/* contents */
+/* clearfix */
+#content-wrap:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+aside {
+  /* for fixed side bar */
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  width: 200px;  /* 너비 고정 */
+  padding-top: 25px;
+  background-color: #333;
+}
+/* aside navigation */
+aside > ul {
+  width: 200px;
+}
+aside > ul > li > a {
+  display: block;
+  color: #fff;
+  padding: 10px 0 10px 20px;
+  font-weight: bold;
+}
+aside > ul > li > a.active {
+  background-color: #4CAF50;
+}
+aside > ul > li > a:hover:not(.active) {
+  background-color: #555;
+}
+aside > h1 {
+  padding: 20px 0 20px 20px;
+  color: #fff;
+}
+/* Section */
+section {
+  /* float: left; */
+  /* aside width */
+  margin-left: 200px;
+}
+article {
+  margin: 10px;
+  padding: 25px;
+  background-color: white;
+  height: 100%;
+}
+/* footer */
+footer {
+  /* footer를 aside위에 올리기 위해 사용(부유객체) */
+  position: absolute;
+  height: 60px;
+  width: 100%;
+  padding: 0 25px;
+  line-height: 60px;
+  color: #8a8c8f;
+  bottom:0;
+  border-top: 1px solid #dee5e7;
+  background-color: #f2f2f2;
+}
+
+
+table {
   text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sendlist_body {
+  overflow-y:hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+table td, #sendlist th {
+  border: 1px solid #ddd;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:hover {background-color: #ddd;}
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+tabletr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #4CAF50;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table td {
+  height: 35px;
+  overflow-y: auto;
+}
+
+/**
+Login
+*/
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
 }

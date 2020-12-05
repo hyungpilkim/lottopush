@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  lottoserver:
+    image: ddle/lotto/pushserver:0.0.1
+    container_name: pushserver
+    ports:
+      - 3002:3002
+    
+  lottoreact:
+    image: ddle/lotto/pushfront:0.0.1
+    container_name: pushfront
+    ports:
+      - 3000:3000
