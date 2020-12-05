@@ -2,7 +2,7 @@ version: '3'
 
 services:
   lottoserver:
-    image: ddle/lottopush:server0.0.1
+    image: ddle/lottopush:server0.0.2
     container_name: pushserver
     ports:
       - 3002:3002
