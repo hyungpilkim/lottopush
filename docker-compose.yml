@@ -2,13 +2,13 @@ version: '3'
 
 services:
   lottoserver:
-    image: ddle/lottopush:server:0.0.1
+    image: ddle/lottopush:server0.0.1
     container_name: pushserver
     ports:
       - 3002:3002
     
   lottoreact:
-    image: ddle/lottopush:front:0.0.1
+    image: ddle/lottopush:front0.0.1
     container_name: pushfront
     ports:
       - 3000:3000
