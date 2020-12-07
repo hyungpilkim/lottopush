@@ -6,4 +6,10 @@ module.exports = function (app) {
       target: 'http://lottoserver:3002'
     })
   )
+
+  app.use(
+    proxy('/auth', {
+      target: 'http://lottoserver:3002'
+    })
+  )
 }
