@@ -1,14 +1,28 @@
-version: '3'
+version: '3.8'
 
 services:
+
+  lottodb:
+    build: ../spring_boot/demo/docker/mariadb/.
+    container_name: containerdb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: lotto
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+
   lottoserver:
-    image: ddle/lottopush:server0.0.2
+    build: ./server/.
     container_name: pushserver
     ports:
       - 3002:3002
-    
-  lottoreact:
-    image: ddle/lottopush:front0.0.1
-    container_name: pushfront
-    ports:
-      - 3000:3000
+
+  # lottoreact:
+  #   image: ddle/lottopush:front0.0.3
+  #   container_name: pushfront
+  #   depends_on:
+  #     - lottoserver
+  #   ports:
+  #     - 3000:3000
