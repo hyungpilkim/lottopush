@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3002'
+const baseUrl = 'http://lottoserver:3002'
 
 /**
  * GET
