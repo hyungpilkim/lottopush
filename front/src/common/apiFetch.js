@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost/:3002'
+const baseUrl = 'http://115.68.226.104:3002'
 
 /**
  * GET
