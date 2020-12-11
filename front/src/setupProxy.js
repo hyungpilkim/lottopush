@@ -1,15 +1,15 @@
 const proxy = require('http-proxy-middleware');
 
 module.exports = function (app) {
-  app.use(
-    proxy('/api', {
-      target: 'http://lottoserver:3002'
-    })
-  )
+  // app.use(
+  //   proxy('/api', {
+  //     target: 'http://lottoserver:3002'
+  //   })
+  // )
 
-  app.use(
-    proxy('/auth', {
-      target: 'http://lottoserver:3002'
-    })
-  )
+  // app.use(
+  //   proxy('/auth', {
+  //     target: 'http://lottoserver:3002'
+  //   })
+  // )
 }
