@@ -13,10 +13,6 @@ services:
     container_name: pushfront
     ports:
       - 3000:443
-    volumes:
-      - ./front/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./front/nginx:/etc/nginx/cert
-
 networks:
   default:
     external:

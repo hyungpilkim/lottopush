@@ -19,6 +19,8 @@ FROM nginx:1.16.0-alpine
 COPY --from=builder /react-frontend/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/nginx.conf /etc/nginx/conf.d
+COPY nginx/fullchain.pem /etc/nginx/cert/fullchain.pem
+COPY nginx/privkey.pem /etc/nginx/cert/privkey.pem
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
 
