@@ -14,8 +14,8 @@ services:
     ports:
       - 3000:443
     volumes:
-      - '.:/front'
-      - '/front/node_modules'
+      - ./front/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./front/nginx:/etc/nginx/cert
 
 networks:
   default:
