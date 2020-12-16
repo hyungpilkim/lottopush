@@ -1,26 +1,28 @@
-FROM node:10-alpine as builder
+# nginx 이미지를 사용합니다. 뒤에 tag가 없으면 latest 를 사용합니다.
+FROM nginx
 
-# install and cache app dependencies
-COPY package.json package-lock.json ./
-RUN npm install && mkdir /react-frontend && mv ./node_modules ./react-frontend
+# root 에 app 폴더를 생성
+RUN mkdir /app
 
-WORKDIR /react-frontend
+# work dir 고정
+WORKDIR /app
 
-COPY . .
+# work dir 에 build 폴더 생성 /app/build
+RUN mkdir ./build
 
-RUN npm run build
+# host pc의 현재경로의 build 폴더를 workdir 의 build 폴더로 복사
+ADD ./build ./build
 
-
-
-# ------------------------------------------------------
-# Production Build
-# ------------------------------------------------------
-FROM nginx:1.16.0-alpine
-COPY --from=builder /react-frontend/build /usr/share/nginx/html
+# nginx 의 default.conf 를 삭제
 RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
-COPY nginx/fullchain.pem /etc/nginx/cert/fullchain.pem
-COPY nginx/privkey.pem /etc/nginx/cert/privkey.pem
-EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
 
+# host pc 의 nginx.conf 를 아래 경로에 복사
+COPY ./nginx/nginx.conf /etc/nginx/conf.d
+COPY ./nginx/fullchain.pem /etc/nginx/cert/fullchain.pem
+COPY ./nginx/privkey.pem /etc/nginx/cert/privkey.pem
+
+# 80 포트 오픈
+EXPOSE 3000
+
+# container 실행 시 자동으로 실행할 command. nginx 시작함
+CMD ["nginx", "-g", "daemon off;"]
