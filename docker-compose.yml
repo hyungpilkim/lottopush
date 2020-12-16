@@ -13,6 +13,9 @@ services:
     container_name: pushfront
     ports:
       - 3000:3000
+    volumes:
+      - '.:/front'
+      - '/front/node_modules'
 
 networks:
   default:
