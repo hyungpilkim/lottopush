@@ -15,7 +15,7 @@ RUN npm run build
 FROM nginx:latest
 # nginx의 기본 설정을 삭제하고 앱에서 설정한 파일을 복사
 RUN rm -rf /etc/nginx/conf.d
-COPY ./nginx/nginx.conf /etc/nginx/conf.d
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx/fullchain.pem /etc/nginx/cert/fullchain.pem
 COPY ./nginx/privkey.pem /etc/nginx/cert/privkey.pem
 
