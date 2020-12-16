@@ -12,7 +12,7 @@ services:
     build: ./front/.
     container_name: pushfront
     ports:
-      - 3000:3000
+      - 3000:443
     volumes:
       - '.:/front'
       - '/front/node_modules'
