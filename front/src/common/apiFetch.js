@@ -1,4 +1,6 @@
-const baseUrl = 'http://115.68.226.104:3002'
+const baseUrlDev = 'http://localhost:3002'
+const baseUrlProd = 'http://115.68.226.104:3002'
+const baseUrl = baseUrlProd
 
 /**
  * GET
@@ -82,4 +84,4 @@ const dtl = (token, push_id, callback) => {
 
 
   
-export default {login, push, history, dtl, user};
+export default {login, push, history, dtl, user, baseUrl};

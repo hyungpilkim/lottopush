@@ -1,16 +1,20 @@
-# base image
-FROM node:12.2.0-alpine
+# pull official base image
+FROM node:13.12.0-alpine
 
 # set working directory
 WORKDIR /app
 
-# `/app/node_modules/.bin`을 $PATH 에 추가
+# add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
-# app dependencies, install 및 caching
-COPY package.json /app/package.json
-RUN npm install
-RUN npm install react-scripts@3.0.1 -g
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
-# 앱 실행
+# add app
+COPY . ./
+
+# start app
 CMD ["npm", "start"]

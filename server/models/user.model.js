@@ -8,7 +8,7 @@ const User = function(user) {
 };
 
 User.create = (newUser, result) => {
-  sql.query("INSERT INTO lo_user (device_type, device_token, agreeYn, reg_dt) VALUES (?, ?, ?, now()) ", [newUser.device_type, newUser.device_token, newUser.agreeYn], (err, res) => {
+  sql.query("INSERT INTO lo_user (device_type, device_token, agree_yn, reg_dt) VALUES (?, ?, ?, now()) ", [newUser.device_type, newUser.device_token, newUser.agreeYn], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
